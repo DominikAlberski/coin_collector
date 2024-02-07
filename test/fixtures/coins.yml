@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  release_year: 1
+  mint_name: MyString
+  weight: 9.99
+  weight_category: 1
+
+two:
+  name: MyString
+  release_year: 1
+  mint_name: MyString
+  weight: 9.99
+  weight_category: 1

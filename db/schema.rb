@@ -10,8 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_07_190715) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "weight_category", ["oz_1", "oz_1_2", "oz_1_4", "oz_1_10", "oz_1_20"]
+
+  create_table "coins", force: :cascade do |t|
+    t.string "name"
+    t.integer "release_year"
+    t.string "mint_name"
+    t.decimal "weight"
+    t.enum "weight_category", null: false, enum_type: "weight_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
