@@ -1,7 +1,8 @@
 class Shop < ApplicationRecord
   # Associations
-  has_many :prices, dependent: :destroy
-  has_many :coins, through: :prices
+  has_many :listings
+  has_many :coins, through: :listings
+  has_many :prices, through: :listings, dependent: :destroy
 
   # Validations
   validates :name, presence: true, uniqueness: true
