@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_194402) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_162807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_194402) do
     t.string "mint_name"
     t.decimal "weight"
     t.enum "weight_category", null: false, enum_type: "weight_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
