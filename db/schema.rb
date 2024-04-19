@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_162807) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_181332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_162807) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.bigint "coin_id", null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coin_id"], name: "index_listings_on_coin_id"
+    t.index ["shop_id"], name: "index_listings_on_shop_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.bigint "listing_id", null: false
+    t.integer "price"
+    t.datetime "scraped_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_prices_on_listing_id"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "url"
@@ -35,4 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_162807) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "listings", "coins"
+  add_foreign_key "listings", "shops"
+  add_foreign_key "prices", "listings"
 end
