@@ -18,6 +18,10 @@ class Coin < ApplicationRecord
     oz_1_20: 'oz_1_20'
   }
 
+  has_many :listings
+  has_many :shops, through: :listings
+  has_many :prices, through: :listings
+
   validates :name, presence: true
   validates :weight_category, presence: true
   validates :weight, numericality: { greater_than: 0 }, allow_nil: true
