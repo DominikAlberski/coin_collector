@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  listing: one
+  price: 1
+  scraped_at: 2024-04-19 20:13:32
+
+two:
+  listing: two
+  price: 1
+  scraped_at: 2024-04-19 20:13:32
